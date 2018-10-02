@@ -43,7 +43,7 @@ ASCII or ANSI code (eg. 0xA9) | \xA9
 
 - `/[0-9]\` matches 0 to 9
 - `/[A-Za-z]/` matches alphabets
-- `/[50-99]/` does *NOT* match 50 to 99. It same as `/[0-9]/`. `/[50-99]/` means match either of thses:
+- `/[50-99]/` does *NOT* match 50 to 99. It same as `/[0-9]/`. `/[50-99]/` means match either of these:
 	- `5`
 	- `0-9`
 	- `9`
@@ -61,14 +61,14 @@ Most metacharacter does not need to be escaped inside character sets
 - `/h[abc.xyz]t/` matches 'hat' and 'h.t', but not 'hot'. 
 - If you escape its fine, but its not needed. `/h[abc\.xyz]t/` would do the same as above.
 
-`] - ^ \` metacharcaters need to be escaped in character sets
+`] - ^ \` metacharacters need to be escaped in character sets
 
 - `var[([][0-9][)\]]` matches 'var(3)' and 'var[4]'
 - `[([]` for '(' or '['
 - `[0-9]` for a number
 - `[)\]]` for ')' or ']'. ']' needed to escape here
 
-## Shorthad character sets
+## Shorthand character sets
 Shorthand | Meaning | Equivalent
 --- | --- | --- |
 `/\d/` | digit | `/[0-9]/`
@@ -78,4 +78,48 @@ Shorthand | Meaning | Equivalent
 `/\W/` | not word character | `/[^a-zA-Z0-9_]/`
 `/\S/` | not whitespace | `/[^ \t\r\r]/`
 
+## Repetition metacharacters
+`*` preceding item zero or more times  
+`+` preceding item one or more times - only scenario where item must exist  
+`?` preceding item zero or one time  
 
+- `/apples*/` matches 'apple', 'apples' and 'applesss'
+- `/apples+/` matches 'apples' and 'applesss', but *NOT* 'apple'
+- `/apples?/` matches 'apple' and 'apples, but *NOT* 'applesss'
+
+## Quantified repetition
+`{` starts quantified repetition of preceding item  
+`}` ends quantified repetition of preceding item 
+ 
+- `{min, max}`
+	- min and max are positive numbers
+	- min must *ALWAYS* be included, can be zero
+	- max is optional
+	- `,` is optional
+
+- `/\d{4,8}/` matches numbers with four to eight digits
+- `/\d{4}/` matches numbers with exactly four digits
+- `/\d{4, }/` matches numbers with four or more digits
+
+## Lazy expressions
+`?` makes preceding character lazy.   
+Matches as little as possible
+
+Syntax:  
+`*?` `+?` `{min,max}?` `??`  
+
+- `/apples??/` first `?` means `s` can occur zero or one time. Second `?` means take `s` zero times. So it matches `apple`
+
+## Grouping metacharacters
+`(` starts grouped expression  
+`)` ends grouped expression  
+
+- `/(abc)+/` matches 'abc' and 'abcabc` and ..
+- `/(in)?dependent/` matches 'independent' and 'dependent'
+
+## Alternation metacharacters
+`|` matches previous or next expression  
+Ordered, leftmost expression gets precedence  
+Multiple choices can be daisy-chained
+
+- `/apple|orange/` matches 'apple' and 'orange`

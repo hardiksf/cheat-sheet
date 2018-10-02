@@ -30,18 +30,14 @@ public class CheatSheet {
          * STREAM
          */
         // Create Stream from array. Array to stream
-        Stream<int[]> stream = Stream.of(intArray);
         IntStream stream2 = Arrays.stream(intArray);
+        Stream<int[]> stream = Stream.of(intArray);
+        IntStream stream3 = IntStream.of(intArray);
 
         // Get unique (distinct) element from Array using stream
         int[] uniqueNumbers = Arrays.stream(intArray).distinct().toArray();
         System.out.println("uniqueNumbers: " + Arrays.toString(uniqueNumbers));
         // [1, 4, 6, 2, 8]
-
-        // Count unique (distinct) characters in string
-        {
-            Long count = ("my string").chars().distinct().count();
-        }
 
         // Array filter using streams
         int[] arrayWithEachElementLessThanFive = Arrays.stream(intArray).filter(arrivalTime -> arrivalTime < 5).toArray();
@@ -50,18 +46,29 @@ public class CheatSheet {
 
         // Maximum number for integer ins array
         int maxOfAnArray = IntStream.of(intArray).summaryStatistics().getMax();
+        Arrays.stream(intArray).summaryStatistics().getMax();
         System.out.println("Maximum number for integer array" + maxOfAnArray);// 8
 
         // Sort array using stream
         Arrays.stream(intArray).sorted().toArray();
 
+        // repeat, times, limit print * 5 times
+        Stream.generate(() -> "*").limit(5).forEach(System.out::print);
+
         /**
          * STRING
          * 
          */
-        // How to count a particular character in a string{
-        long count = string.chars().filter(ch -> ch == 't').count();
-        System.out.println("count chara:" + count); // 1
+        // How to count a particular character in a string
+        {
+            Long count = string.chars().filter(ch -> ch == 't').count();
+            System.out.println("count chara:" + count); // 1
+        }
+
+        // Count unique (distinct) characters in string
+        {
+            Long count = ("my string").chars().distinct().count();
+        }
 
         // Integer to String
         StringBuilder stringBuilder = new StringBuilder(Integer.toString(integer));
