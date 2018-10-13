@@ -23,6 +23,12 @@ public class CheatSheet {
         System.out.println("print an array " + Arrays.toString(intArray));
         // [1, 4, 6, 2, 8, 2, 8, 2, 8]
 
+        // print two dimensional (2D) arry
+        {
+            int[][] twoDimensionalArray = {{1, 3}, {2, 3}, {3, 3}};
+            System.out.println(Arrays.deepToString(twoDimensionalArray));
+        }
+
         // List to array
         int[] listToArray = list.stream().mapToInt(element -> element).toArray();
 
@@ -49,8 +55,11 @@ public class CheatSheet {
         Arrays.stream(intArray).summaryStatistics().getMax();
         System.out.println("Maximum number for integer array" + maxOfAnArray);// 8
 
-        // Sort array using stream
+        // Sort array using stream - this returns array
         Arrays.stream(intArray).sorted().toArray();
+
+        // sort method - this returns void
+        Arrays.sort(intArray);
 
         // repeat, times, limit print * 5 times
         Stream.generate(() -> "*").limit(5).forEach(System.out::print);

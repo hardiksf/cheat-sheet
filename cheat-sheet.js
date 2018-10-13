@@ -52,6 +52,24 @@ let number = 123;
 number = number + "";
 let reverseNumber = parseInt(number.split("").reverse().join(""));
 
+// Integer to binary
+{
+    const N = 12345;
+    const binaryNumber = N.toString(2);
+}
+
+// Binary to integer
+{
+    const binaryNumber = 00000111010101010;
+    parseInt(binaryNumber.join(""), 2);
+}
+
+
+// Repeat a character in times. Repeats '*' 10 times.
+{
+    '*'.repeat(10);
+}
+
 
 
 //Create alphabets

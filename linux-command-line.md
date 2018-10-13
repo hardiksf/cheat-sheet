@@ -35,3 +35,27 @@
 `mkdir new-folder` or `mkdir path-where-you-want-folder-to-be-created/folder-name` space seperate folders for creating multiple folders
 `mkdir -p folder1/folder2/folder2` creates parent folder if missing in path you gave  
 - `rmdir` - folder has to be empty for it to be removed like this
+
+### Copy, move and delete files and folders
+- `cp my-file.txt copy-my-file-txt`
+- `cp my-file.txt path/where/i/want/my-file.txt/to/be/be/copied`
+- `mv` for move or renaming. Similar to `cp`
+- `mv path/where/my-file.txt/is .` moves file from some folder to current folder.
+- `mv *.txt path/where/you/want/these/files/to/be/moved` - moves all txt files
+- `mv /path/where/ALL/files/are/* .` moves *ALL* files from a folder to current working folder
+- `rm my-file.txt` removes my-files.txt
+- `rm my-file?.txt` removes my-file1.txt and my-file2.txt, but not my-file.txt
+- `rm -r path/of/directory/which/you/want/to/delete` removes recursively. Removes folders which are not empty as well and files inside it
+
+### Find
+- `find . -name "abc*"`
+	- `.` scope where you want to find. We are looking inside curent folder here  
+	- `-name` how do you want to find. We are looking for file or foldername here  
+	- `"abc*"` what are you finding. We are looking for file/s or folder/s whose name starts with 'abc' here
+
+### User roles and sudo
+- When you do something via `sudo` permission stays for few minutes. It is a good idea to give up permisson (`sudo -k`) after you are done with whatever you were doing
+
+- `sudo -s` I want to do everything via `sudo`
+ 	- End of the prompt changes from `$` to `#` to indicate that
+ 	- `exit` to switch back to user
