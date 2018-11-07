@@ -27,6 +27,43 @@ for (let index = 0; index < map.size; index++) {
 const uniqueNumbersSet = new Set(myArray);
 const uniqueNumbersArray = Array.from(new Set(myArray));
 
+// removes the last element from an array and returns that element
+uniqueNumbersArray.pop();
+
+//  removes the first element from an array and returns that removed element
+uniqueNumbersArray.shift();
+
+// dds one or more elements to the beginning of an array and returns the new length of the array
+uniqueNumbersArray.unshift();
+
+// adds one or more elements to the end of an array and returns the new length of the array.
+uniqueNumbersArray.push();
+
+// merge two or more arrays. This method does not change the existing arrays, but instead returns a new array. 
+{
+    var array1 = ['a', 'b', 'c'];
+    var array2 = ['d', 'e', 'f'];
+
+    console.log(array1.concat(array2));
+    // expected output: Array ["a", "b", "c", "d", "e", "f"]
+}
+
+// splice
+{
+    var myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
+    var removed = myFish.splice(3, 1);
+
+    // removed is ["mandarin"]
+    // myFish is ["angel", "clown", "drum", "sturgeon"]
+} {
+    var myFish = ['angel', 'clown', 'drum', 'sturgeon'];
+    var removed = myFish.splice(2, 1, 'trumpet');
+
+    // myFish is ["angel", "clown", "trumpet", "sturgeon"]
+    // removed is ["drum"]
+}
+
+
 // Max of an Array
 Math.max(...myArray);
 
@@ -45,7 +82,6 @@ myArray = new int[10];
 // Pre-fill array 
 // Pre-filling it with 0 here
 Array.from(Array(myArray.length), () => 0);
-
 
 //Reverse integer
 let number = 123;

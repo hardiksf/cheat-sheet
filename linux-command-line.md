@@ -59,3 +59,30 @@
 - `sudo -s` I want to do everything via `sudo`
  	- End of the prompt changes from `$` to `#` to indicate that
  	- `exit` to switch back to user
+
+### File permissions
+- Octal file permissions
+
+0  | Read (4)  | Write (2)  | Execute (1)   | Result
+|:-------------: | :-------------:| :-------------:| :-------------:| :-------------:|
+User  | r  | w  | x  | 7
+  | r  | w  | -  | 6
+Group  | r  | -  | x  | 5
+Others  | r  | -  | -  | 4
+ | -  | w  | x  | 3
+ | -  | w  | -  | 2
+ | -  | -  | x  | 1
+ | -  | -  | -  | 0
+ 
+ - Symbolic file permissions
+ 
+ 0 | Read (r) | Write (w) | Execute (x) | Result
+|:---:|:---:|:---:|:---:|:---:|
+User (u) | + | + | + | u+rwx
+Group (g) | = | - | - | g=r
+Others (o) | - | - | - | o-rwx
+All (a) | |
+
+- `+` adds permission
+- `-` removes permission
+- `=` adds permissions but removes others
