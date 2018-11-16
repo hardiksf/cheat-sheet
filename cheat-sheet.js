@@ -2,6 +2,33 @@
  ***************** STRING
  * 
  *************************************/
+//replaceAll() is faster than replace()
+{
+    const doc = "Text toges here";
+    console.time(`1`);
+    //replace all characters except alphanumeric and space
+    const replacedString = doc.replace(/[^a-zA-Z0-9 ]/g, '');
+    console.timeEnd(`1`);
+
+    String.prototype.replaceAll = function(search, replacement) {
+        return this.replace(new RegExp(search, 'g'), replacement);
+    };
+
+    console.time(`2`);
+    doc.replaceAll(/[^a-zA-Z0-9 ]/g, '');
+    console.timeEnd(`2`);
+
+    //running time
+    // 1: 0.252ms
+    // 2: 0.079ms
+
+    // 1: 0.205ms
+    // 2: 0.077ms
+
+    // 1: 0.170ms
+    // 2: 0.092ms
+}
+
 // Unique characters in string
 String.prototype.concat(...new Set(string))
 
