@@ -10,7 +10,7 @@
     const replacedString = doc.replace(/[^a-zA-Z0-9 ]/g, '');
     console.timeEnd(`1`);
 
-    String.prototype.replaceAll = function(search, replacement) {
+    String.prototype.replaceAll = function (search, replacement) {
         return this.replace(new RegExp(search, 'g'), replacement);
     };
 
@@ -134,10 +134,32 @@ let reverseNumber = parseInt(number.split("").reverse().join(""));
 }
 
 
-
 //Create alphabets
 //65 is ASCI code for A and 90 for Z
 //97 to 122 for a-z
 for (let i = 65; i <= 90; i++) {
     console.log(String.fromCharCode(i));
 }
+
+/************************************
+ ***************** REGEX, regular expression
+ * 
+ *************************************/
+/*
+ * --- Directions
+ * Write a function that returns the number of vowels
+ * used in a string.  Vowels are the characters 'a', 'e'
+ * 'i', 'o', and 'u'.
+ * --- Examples
+ *   vowels('Hi There!') --> 3
+ *   vowels('Why do you ask?') --> 4
+ *   vowels('Why?') --> 0
+ */
+const vowelsRegex = string => {
+    const listOfVowels = string.match(/[aeiou]/gi); // g-> don't stop at first occurrence, i-> ignore case
+    if (listOfVowels) {//listOfVowels is an array. Incase if there is no match, it would be null. That is why we have this if condition. In case of no match, we cant have length of null
+        return listOfVowels.length;
+    } else {
+        return 0;
+    }
+};
